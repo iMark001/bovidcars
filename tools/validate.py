@@ -63,6 +63,8 @@ def validate_car(car: dict, photos_root: Path = PHOTOS_DIR, require_photos: bool
         return errors
     if not SLUG_RE.match(car["slug"]):
         errors.append("slug: только латиница в нижнем регистре, цифры и дефисы")
+    if not SLUG_RE.match(str(car["brand"])):
+        errors.append("brand: нужен ключ марки как в site.json (например land-rover), а не название")
     if car["status"] not in STATUSES:
         errors.append(f"status: допустимо {STATUSES}")
     if car["engineType"] not in ENGINE_TYPES:

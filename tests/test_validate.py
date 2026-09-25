@@ -73,3 +73,9 @@ def test_all_project_cars_are_valid():
 
 def test_main_returns_zero_for_project_data():
     assert validate.main() == 0
+
+
+@pytest.mark.parametrize("brand", ["Land Rover", "Volvo", "land rover", "land_rover"])
+def test_brand_must_be_slug_key(valid_car, brand):
+    valid_car["brand"] = brand
+    assert any("brand" in e for e in validate.validate_car(valid_car, require_photos=False))

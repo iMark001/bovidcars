@@ -140,3 +140,9 @@ def test_car_page_escapes_html(tmp_path, valid_car, site):
     html = build.render_car_page(valid_car, site, rate=1.1, rate_date="2026-09-25")
     assert "<script>alert(1)</script>" not in html
     assert "&lt;script&gt;" in html
+
+
+def test_unknown_brand_is_reported(capsys, site):
+    build.warn_unknown_brands([{"slug": "x", "brand": "bmw"}, {"slug": "y", "brand": "volvo"}], site)
+    out = capsys.readouterr().out
+    assert "bmw" in out and "volvo" not in out

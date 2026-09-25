@@ -17,3 +17,9 @@
 - PDF: для печати build делает JPEG 1600px (img/<slug>/print/), иначе Chrome вшивает WebP без сжатия (10 МБ → ~1 МБ).
 - Playwright запускается через системный Chrome: channel="chrome" (встроенный Chromium не скачан).
 - В body есть data-rate-date — не использовать селектор [data-rate-date] для текстовых узлов (был баг: затёрлась вся страница).
+
+## 25.09.2026 — публикация
+- Репозиторий: github.com/iMark001/bovidcars (публичный), Pages из main:/docs → https://imark001.github.io/bovidcars/
+- Публикация новой партии: build.py → pdf.py → pytest → git commit → git push (Pages пересобирается сам, ~1 мин).
+- Приватность: данные салонов/покупателей для автотеста — tests/forbidden.local.txt (в .gitignore). Никогда не коммитить имена/телефоны салонов.
+- Code review: марка в JSON должна быть ключом (land-rover), validate.py это проверяет; неизвестная марка → предупреждение в build.

@@ -102,6 +102,13 @@ def load_car_slugs() -> list[str]:
     return [c["slug"] for c in load_cars()]
 
 
+def warn_unknown_brands(cars: list[dict], site: dict) -> None:
+    """Марки без записи в site.json попадут в конец каталога и останутся без логотипа."""
+    for brand in sorted({c["brand"] for c in cars} - set(site["brands"])):
+        slugs = ", ".join(c["slug"] for c in cars if c["brand"] == brand)
+        print(f"! Марка «{brand}» не описана в data/site.json (логотип, название) — авто: {slugs}")
+
+
 def fetch_rate(site: dict) -> tuple[float, str]:
     """Курс EUR→USD ЕЦБ; при ошибке — резервный из site.json."""
     try:
@@ -254,6 +261,7 @@ def build(out_dir: Path = DOCS_DIR, rate: float | None = None, rate_date: str | 
     invalid = {k: v for k, v in invalid.items() if v}
     if invalid:
         raise ValueError(f"Некорректные данные авто: {invalid}")
+    warn_unknown_brands(cars, site)
     _clean(out_dir)
     _copy_media(cars, out_dir)
     _write(out_dir / "index.html", render_index(cars, site, rate, rate_date))

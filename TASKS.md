@@ -14,7 +14,7 @@
 - [x] JSON: Range Rover Sport Ostuni Pearl White (SAL1A2BW5TA664980) — 126 327 $
 - [x] JSON: Porsche Taycan 4S Cross Turismo (Q66902) — 143 391 €
 - [x] Логотипы марок SVG
-- [/] Таблица дополнений из официальных источников → утверждение
+- [x] Таблица дополнений из официальных источников → утверждено
 
 ## Этап 3. Сборка
 - [x] Тесты (validate, build, запрещённые строки)
@@ -23,10 +23,19 @@
 - [x] Фильтры, переключатель €/$, «Поделиться»
 
 ## Этап 4. Превью и согласование
-- [/] Показ в браузере, правки
+- [x] Показ в браузере, правки (hero без Грузии, цены € → $ без «≈», фото LR целиком)
 
 ## Этап 5. Публикация
-- [ ] Репозиторий iMark001/bovidcars + GitHub Pages
+- [x] Репозиторий iMark001/bovidcars + GitHub Pages → https://imark001.github.io/bovidcars/
 
 ## Этап 6. Code review
+- [x] security-reviewer: CRITICAL/HIGH/MEDIUM нет
+- [x] code-reviewer: HIGH — марка не проверялась → исправлено (validate + предупреждение в build)
+
 ## Этап 7. Память
+- [x] MEMORY.md, авто-память
+
+## Бэклог
+- [ ] Официальные рендеры для Volvo Vapour Grey и Platinum Grey (в КП по 3 фото)
+- [ ] (LOW) build: кэшировать Jinja Environment и метаданные фото при росте каталога
+- [ ] (LOW) закрепить версии зависимостей (pip-compile)
