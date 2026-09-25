@@ -1,0 +1,5 @@
+{# Всегда: сначала евро, затем доллары. Пересчёт по курсу ЕЦБ, в браузере курс обновляется #}
+<span class="price-value" data-amount="{{ car.price.amount }}" data-currency="{{ car.price.currency }}">
+  <span class="price-value__main">{{ car.priceFirst }}</span>
+  <span class="price-value__alt">{{ car.priceSecond }}</span>
+</span>

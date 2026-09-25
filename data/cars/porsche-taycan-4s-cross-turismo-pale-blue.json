@@ -1,0 +1,222 @@
+{
+  "slug": "porsche-taycan-4s-cross-turismo-pale-blue",
+  "brand": "porsche",
+  "model": "Taycan",
+  "trim": "4S Cross Turismo",
+  "year": 2026,
+  "engineType": "electric",
+  "color": "Pale Blue Metallic",
+  "interior": "Частично кожаный салон Slate Grey",
+  "wheels": "21″ Cross Turismo Design, Satin Black",
+  "vin": null,
+  "configId": "Q66902",
+  "status": "available",
+  "addedDate": "2026-09-25",
+  "price": {
+    "amount": 143391,
+    "currency": "EUR"
+  },
+  "keySpecs": [
+    {
+      "label": "Мощность",
+      "value": "до 598 л.с.",
+      "official": true
+    },
+    {
+      "label": "0–100 км/ч",
+      "value": "3,8 с",
+      "official": true
+    },
+    {
+      "label": "Запас хода",
+      "value": "до 613 км",
+      "official": true
+    },
+    {
+      "label": "Привод",
+      "value": "AWD",
+      "official": true
+    },
+    {
+      "label": "Мест",
+      "value": "4+1"
+    }
+  ],
+  "extraOptions": [
+    "Offroad Design Package",
+    "Тонированные фары HD-Matrix LED с 4-точечными ДХО в цвете Glacier Iceblue",
+    "Светодиодная полоса с логотипом PORSCHE в цвете Glacier Iceblue",
+    "Подруливающая задняя ось",
+    "Porsche Torque Vectoring Plus (PTV Plus)",
+    "Панорамная крыша",
+    "Проекционный дисплей (Head-up display)",
+    "Дисплей пассажира",
+    "Аудиосистема BOSE® Surround Sound",
+    "Адаптивные спортивные сиденья, 18 электрорегулировок, с памятью",
+    "Колёсные диски 21″ Cross Turismo Design, окрашенные в Satin Black"
+  ],
+  "specs": [
+    {
+      "title": "Силовая установка",
+      "rows": [
+        {
+          "label": "Тип",
+          "value": "Электромобиль, два электромотора"
+        },
+        {
+          "label": "Мощность (с Launch Control)",
+          "value": "598 л.с. (440 кВт)",
+          "official": true
+        },
+        {
+          "label": "Крутящий момент (с Launch Control)",
+          "value": "до 710 Нм",
+          "official": true
+        },
+        {
+          "label": "Разгон 0–100 км/ч",
+          "value": "3,8 с",
+          "official": true
+        },
+        {
+          "label": "Максимальная скорость",
+          "value": "240 км/ч",
+          "official": true
+        },
+        {
+          "label": "Привод",
+          "value": "Полный (AWD)",
+          "official": true
+        },
+        {
+          "label": "Трансмиссия",
+          "value": "Одноступенчатая на передней оси, двухступенчатая на задней"
+        },
+        {
+          "label": "Запас хода (WLTP)",
+          "value": "531–613 км",
+          "official": true
+        },
+        {
+          "label": "Расход энергии (WLTP)",
+          "value": "18,7–21,4 кВт·ч/100 км",
+          "official": true
+        }
+      ]
+    },
+    {
+      "title": "Батарея и зарядка",
+      "rows": [
+        {
+          "label": "Батарея",
+          "value": "Performance Battery Plus",
+          "official": true
+        },
+        {
+          "label": "Напряжение системы",
+          "value": "800 В",
+          "official": true
+        },
+        {
+          "label": "Максимальная мощность DC-зарядки",
+          "value": "320 кВт",
+          "official": true
+        },
+        {
+          "label": "Зарядка 10–80% (DC)",
+          "value": "18 мин",
+          "official": true
+        }
+      ]
+    }
+  ],
+  "features": [
+    {
+      "title": "Экстерьер",
+      "items": [
+        "Цвет кузова Pale Blue Metallic",
+        "Offroad Design Package",
+        "Колёсные диски 21″ Cross Turismo Design",
+        "Окрашенные диски Satin Black (Porsche Exclusive Manufaktur)",
+        "Надписи с названием модели в чёрном глянце",
+        "Молдинги боковых окон в чёрном глянце (Porsche Exclusive Manufaktur)",
+        "Ниша заднего стеклоочистителя в чёрном глянце (Porsche Exclusive Manufaktur)",
+        "Встроенная панорамная крыша",
+        "Тонированные стёкла Privacy",
+        "Герметик для шин и электрический компрессор"
+      ]
+    },
+    {
+      "title": "Свет",
+      "items": [
+        "Тонированные фары HD-Matrix LED с 4-точечными ДХО в цвете Glacier Iceblue (Porsche Exclusive Manufaktur)",
+        "Светодиодная полоса с логотипом PORSCHE в цвете Glacier Iceblue (Porsche Exclusive Manufaktur)",
+        "Светодиодная проекция логотипа PORSCHE из дверей (Porsche Exclusive Manufaktur)"
+      ]
+    },
+    {
+      "title": "Шасси и динамика",
+      "items": [
+        "Одноступенчатая трансмиссия на передней оси и двухступенчатая на задней",
+        "Подруливающая задняя ось",
+        "Porsche Torque Vectoring Plus (PTV Plus) — распределение момента на задней оси",
+        "Тормозные суппорты в чёрном глянце (Porsche Exclusive Manufaktur)",
+        "Porsche Electric Sport Sound — спортивное звучание электромобиля",
+        "Компас на приборной панели"
+      ]
+    },
+    {
+      "title": "Интерьер и сиденья",
+      "items": [
+        "Частично кожаный салон Slate Grey (Porsche Exclusive Manufaktur)",
+        "Адаптивные спортивные передние сиденья, 18 электрорегулировок, с памятью",
+        "Конфигурация 4+1 мест",
+        "Подогрев передних и задних сидений",
+        "Герб Porsche на подголовниках передних сидений (Porsche Exclusive Manufaktur)",
+        "Подогрев руля"
+      ]
+    },
+    {
+      "title": "Помощь водителю",
+      "items": [
+        "Проекционный дисплей (Head-up display)",
+        "ParkAssist с системой кругового обзора (Surround View)",
+        "Ассистент смены полосы Lane Change Assist",
+        "Адаптивный круиз-контроль (Adaptive Cruise Control)"
+      ]
+    },
+    {
+      "title": "Комфорт",
+      "items": [
+        "Бесключевой доступ Porsche Entry",
+        "Доводчики дверей"
+      ]
+    },
+    {
+      "title": "Мультимедиа и звук",
+      "items": [
+        "Аудиосистема BOSE® Surround Sound",
+        "Дисплей пассажира"
+      ]
+    }
+  ],
+  "supplemented": [
+    {
+      "field": "Мощность, момент, разгон, макс. скорость",
+      "value": "598 л.с. (440 кВт) с Launch Control, до 710 Нм, 3,8 с, 240 км/ч",
+      "note": "В КП Porsche технических характеристик нет",
+      "source": "porsche.com — Taycan 4S Cross Turismo"
+    },
+    {
+      "field": "Запас хода и расход",
+      "value": "531–613 км, 18,7–21,4 кВт·ч/100 км (WLTP)",
+      "source": "porsche.com — Taycan 4S Cross Turismo"
+    },
+    {
+      "field": "Батарея и зарядка",
+      "value": "Performance Battery Plus, 800 В, DC до 320 кВт, 10–80% за 18 мин",
+      "source": "porsche.com — Taycan 4S Cross Turismo"
+    }
+  ],
+  "sourcePdf": "PDF 25.09.2026/Q66902 - Taycan 4S Cross Turismo.pdf"
+}

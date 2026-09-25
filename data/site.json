@@ -1,0 +1,41 @@
+{
+  "name": "bovidcars",
+  "tagline": "Премиальные автомобили под ключ",
+  "lead": "Поставка новых Volvo, Land Rover и Porsche в Россию под ключ: доставка, растаможка и оформление. Полная комплектация и прозрачная цена.",
+  "baseUrl": "https://imark001.github.io/bovidcars/",
+  "priceNote": "Стоимость доставки в Россию под ключ рассчитывается индивидуально.",
+  "brandOrder": [
+    "volvo",
+    "land-rover",
+    "porsche"
+  ],
+  "brands": {
+    "volvo": {
+      "name": "Volvo",
+      "logo": "volvo.svg"
+    },
+    "land-rover": {
+      "name": "Land Rover",
+      "logo": "land-rover.svg"
+    },
+    "porsche": {
+      "name": "Porsche",
+      "logo": "porsche.svg"
+    }
+  },
+  "contacts": {
+    "manager": "Денис Кушанашвили",
+    "phone": "+7 906 864-67-17",
+    "whatsapp": "+79068646717",
+    "telegram": "+79068646717"
+  },
+  "rate": {
+    "api": "https://api.frankfurter.dev/v1/latest?from=EUR&to=USD",
+    "fallbackEurUsd": 1.1403,
+    "fallbackDate": "2026-09-25"
+  },
+  "heroImage": {
+    "src": "volvo-ex90-ultra-denim-blue/03.webp",
+    "alt": "Volvo EX90 Denim Blue на набережной на закате"
+  }
+}

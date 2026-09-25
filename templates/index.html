@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% block content %}
+<main>
+  <section class="hero">
+    <div class="hero__text">
+      <h1 class="hero__title">{{ site.tagline }}</h1>
+      <p class="hero__lead">{{ site.lead }}</p>
+      <div class="hero__actions">
+        <a class="btn btn--primary" href="#catalog">Смотреть автомобили</a>
+        {% if links.whatsapp %}<a class="btn btn--ghost" href="{{ links.whatsapp }}" target="_blank" rel="noopener">Написать в WhatsApp</a>{% endif %}
+      </div>
+    </div>
+    {% if site.heroImage %}
+    <figure class="hero__media"><img src="{{ root }}img/{{ site.heroImage.src }}" alt="{{ site.heroImage.alt }}" fetchpriority="high"></figure>
+    {% endif %}
+    <div class="hero__brands" aria-label="Марки в каталоге">
+      {% for brand, items in groups %}
+      <a class="hero__brand" href="#brand-{{ brand }}">
+        {% if brands[brand].logo %}<img src="{{ root }}assets/brands/{{ brands[brand].logo }}" alt="{{ brands[brand].name }}" class="logo logo--{{ brand }}">{% else %}{{ brands[brand].name }}{% endif %}
+        <span>{{ items|length }} {{ 'автомобиль' if items|length % 10 == 1 and items|length % 100 != 11 else ('автомобиля' if items|length % 10 in [2,3,4] and items|length % 100 not in [12,13,14] else 'автомобилей') }}</span>
+      </a>
+      {% endfor %}
+    </div>
+  </section>
+
+  <nav class="subnav" id="catalog" aria-label="Фильтры каталога">
+    <div class="subnav__inner">
+      <div class="filter" role="group" aria-label="Марка">
+        <button class="chip is-active" data-filter="brand" data-value="all">Все марки</button>
+        {% for brand, items in groups %}<button class="chip" data-filter="brand" data-value="{{ brand }}">{{ brands[brand].name }}</button>{% endfor %}
+      </div>
+      {% if engines|length > 1 %}
+      <div class="filter" role="group" aria-label="Двигатель">
+        <button class="chip is-active" data-filter="engine" data-value="all">Любой двигатель</button>
+        {% for e in engines %}<button class="chip" data-filter="engine" data-value="{{ e }}">{{ engine_labels[e] }}</button>{% endfor %}
+      </div>
+      {% endif %}
+      {% if statuses|length > 1 %}
+      <div class="filter" role="group" aria-label="Статус">
+        <button class="chip is-active" data-filter="status" data-value="all">Любой статус</button>
+        {% for s in statuses %}<button class="chip" data-filter="status" data-value="{{ s }}">{{ status_labels[s] }}</button>{% endfor %}
+      </div>
+      {% endif %}
+    </div>
+  </nav>
+
+  {% for brand, items in groups %}
+  <section class="brand-tile brand-tile--{{ loop.index0 % 3 }}" id="brand-{{ brand }}" data-brand="{{ brand }}">
+    <div class="brand-tile__head">
+      {% if brands[brand].logo %}<img src="{{ root }}assets/brands/{{ brands[brand].logo }}" alt="" class="logo logo--{{ brand }} logo--head">{% endif %}
+      <h2 class="brand-tile__title">{{ brands[brand].name }}</h2>
+    </div>
+    <div class="card-grid">
+      {% for car in items %}
+      <a class="card{% if car.status == 'sold' %} is-sold{% endif %}" href="{{ root }}cars/{{ car.slug }}/"
+         data-brand="{{ car.brand }}" data-engine="{{ car.engineType }}" data-status="{{ car.status }}">
+        {% set cover = car.photos[0] if car.photos else none %}
+        <div class="card__media{% if cover and cover.cutout %} card__media--cutout{% elif cover %} card__media--fit{% endif %}"{% if cover and cover.edge %} style="--edge: {{ cover.edge }}"{% endif %}>
+          <img src="{{ root }}img/{{ car.slug }}/card.webp" alt="{{ car.fullName }}, {{ car.color }}" loading="lazy">
+        </div>
+        <div class="card__body">
+          {% with car=car %}{% include "partials/status.html" %}{% endwith %}
+          <h3 class="card__title">{{ car.model }}</h3>
+          <p class="card__trim">{{ car.trim }}</p>
+          <p class="card__meta">{{ car.color }}, {{ car.year }}, {{ car.engineLabel|lower }}</p>
+          <p class="card__price">{% with car=car %}{% include "partials/price.html" %}{% endwith %}</p>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+  </section>
+  {% endfor %}
+
+  <p class="empty-state" hidden>По выбранным фильтрам автомобилей нет. Сбросьте один из фильтров, чтобы увидеть весь каталог.</p>
+</main>
+{% endblock %}
+{% block scripts %}<script src="{{ root }}assets/js/filters.js" defer></script>{% endblock %}

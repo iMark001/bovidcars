@@ -1,0 +1,137 @@
+{% extends "base.html" %}
+{% block title %}{{ car.fullName }}, {{ car.color }} — {{ site.name }}{% endblock %}
+{% block description %}{{ car.fullName }}, {{ car.color }}, {{ car.year }}. {{ car.statusLabel }}. {{ car.priceFirst }} / {{ car.priceSecond }}.{% endblock %}
+{% block og %}
+  <meta property="og:title" content="{{ car.fullName }}, {{ car.color }}">
+  <meta property="og:description" content="{{ car.statusLabel }}. {{ car.priceFirst }} / {{ car.priceSecond }}. {{ site.tagline }}.">
+  <meta property="og:image" content="{{ site.baseUrl }}img/{{ car.slug }}/card.webp">
+  <meta property="og:url" content="{{ car.url }}">
+{% endblock %}
+{% block content %}
+<main class="car" data-share-title="{{ car.fullName }}, {{ car.color }}" data-share-url="{{ car.url }}">
+  <nav class="subnav subnav--car" aria-label="{{ car.model }}">
+    <div class="subnav__inner">
+      <a class="subnav__back" href="{{ root }}index.html#brand-{{ car.brand }}">Все автомобили</a>
+      <span class="subnav__title">{{ car.brandName }} {{ car.model }}</span>
+      <span class="subnav__price">{% include "partials/price.html" %}</span>
+      {% if links.whatsapp %}<a class="btn btn--primary btn--small" href="{{ links.whatsapp }}?text={{ ('Здравствуйте! Интересует ' ~ car.fullName ~ ', ' ~ car.color ~ '. ' ~ car.url)|urlencode }}" target="_blank" rel="noopener">Написать</a>{% endif %}
+    </div>
+  </nav>
+
+  <section class="car-hero">
+    <div class="car-hero__head">
+      {% if car.brandLogo %}<img src="{{ root }}assets/brands/{{ car.brandLogo }}" alt="{{ car.brandName }}" class="logo logo--{{ car.brand }} logo--hero">{% endif %}
+      <h1 class="car-hero__title">{{ car.model }}</h1>
+      <p class="car-hero__trim">{{ car.trim }}</p>
+      <p class="car-hero__meta">{% include "partials/status.html" %} <span>{{ car.color }}</span> <span>{{ car.year }} модельный год</span></p>
+    </div>
+    {% if car.photos %}
+    <figure class="car-hero__media{% if car.photos[0].cutout %} car-hero__media--cutout{% endif %}">
+      <img src="{{ root }}img/{{ car.slug }}/{{ car.photos[0].file }}" alt="{{ car.fullName }}, {{ car.color }}"
+           width="{{ car.photos[0].width }}" height="{{ car.photos[0].height }}" fetchpriority="high">
+    </figure>
+    {% endif %}
+    <dl class="key-specs">
+      {% for spec in car.keySpecs %}
+      <div class="key-specs__item">
+        <dt>{{ spec.label }}</dt>
+        <dd>{{ spec.value }}{% if spec.official %}<sup class="star" title="По данным производителя">*</sup>{% endif %}</dd>
+      </div>
+      {% endfor %}
+    </dl>
+  </section>
+
+  <section class="offer">
+    <div class="offer__price">
+      <h2 class="section-title">Цена</h2>
+      <div class="offer__amount">{% include "partials/price.html" %}</div>
+      <p class="offer__note">{{ site.priceNote }} <span class="rate-note">Пересчёт по курсу ЕЦБ: 1 € = <span data-rate-text>{{ '%.4f'|format(rate) }}</span> $ на <span data-rate-date-text>{{ rate_date|human_date }}</span>.</span></p>
+    </div>
+    <dl class="offer__facts">
+      <div><dt>{{ 'VIN' if car.vin else '№ конфигурации' }}</dt><dd class="mono-ish">{{ car.vin or car.configId }}</dd></div>
+      <div><dt>Цвет кузова</dt><dd>{{ car.color }}</dd></div>
+      <div><dt>Салон</dt><dd>{{ car.interior }}</dd></div>
+      <div><dt>Колёса</dt><dd>{{ car.wheels }}</dd></div>
+      <div><dt>Двигатель</dt><dd>{{ car.engineLabel }}</dd></div>
+      <div><dt>Поступление</dt><dd>{{ car.addedDate|human_date }}</dd></div>
+    </dl>
+    <div class="offer__actions">
+      {% if links.whatsapp %}<a class="btn btn--primary" href="{{ links.whatsapp }}?text={{ ('Здравствуйте! Интересует ' ~ car.fullName ~ ', ' ~ car.color ~ '. ' ~ car.url)|urlencode }}" target="_blank" rel="noopener">Написать в WhatsApp</a>{% endif %}
+      {% if links.telegram %}<a class="btn btn--ghost" href="{{ links.telegram }}" target="_blank" rel="noopener">Telegram</a>{% endif %}
+      {% if links.phone %}<a class="btn btn--ghost" href="{{ links.phone }}">Позвонить</a>{% endif %}
+      <a class="btn btn--ghost" href="{{ root }}pdf/{{ car.slug }}.pdf" download="{{ car.pdfName }}">Скачать PDF</a>
+      <a class="btn btn--ghost" href="{{ root }}pdf/{{ car.slug }}-no-price.pdf" download="{{ car.pdfName|replace('.pdf', '-bez-ceny.pdf') }}">PDF без цены</a>
+      <button class="btn btn--ghost" type="button" data-share>Поделиться</button>
+    </div>
+    <div class="share-menu" hidden>
+      <a data-share-target="whatsapp" target="_blank" rel="noopener">WhatsApp</a>
+      <a data-share-target="telegram" target="_blank" rel="noopener">Telegram</a>
+      <button type="button" data-share-target="copy">Скопировать ссылку</button>
+      <span class="share-menu__done" role="status" aria-live="polite"></span>
+    </div>
+  </section>
+
+  {% if car.photos|length > 1 %}
+  <section class="gallery" aria-label="Фотографии">
+    <div class="gallery__track" tabindex="0">
+      {% for photo in car.photos %}
+      <figure class="gallery__item{% if photo.cutout %} gallery__item--cutout{% endif %}">
+        <img src="{{ root }}img/{{ car.slug }}/{{ photo.file }}" alt="{{ car.fullName }}, фото {{ loop.index }}"
+             width="{{ photo.width }}" height="{{ photo.height }}" loading="lazy">
+      </figure>
+      {% endfor %}
+    </div>
+    <div class="gallery__nav">
+      <button class="icon-btn" type="button" data-gallery="prev" aria-label="Предыдущее фото">‹</button>
+      <button class="icon-btn" type="button" data-gallery="next" aria-label="Следующее фото">›</button>
+    </div>
+  </section>
+  {% endif %}
+
+  {% if car.extraOptions %}
+  <section class="options">
+    <div class="options__inner">
+      <h2 class="section-title section-title--on-dark">Дополнительно установлено</h2>
+      <ul class="options__list">
+        {% for option in car.extraOptions %}<li>{{ option }}</li>{% endfor %}
+      </ul>
+    </div>
+  </section>
+  {% endif %}
+
+  {% if car.specs %}
+  <section class="specs">
+    <h2 class="section-title">Технические характеристики</h2>
+    <div class="specs__grid">
+      {% for group in car.specs %}
+      <div class="specs__group">
+        <h3>{{ group.title }}</h3>
+        <dl>
+          {% for row in group.rows %}
+          <div class="specs__row"><dt>{{ row.label }}</dt><dd>{{ row.value }}{% if row.official %}<sup class="star">*</sup>{% endif %}</dd></div>
+          {% endfor %}
+        </dl>
+      </div>
+      {% endfor %}
+    </div>
+    {% if car.hasOfficial %}<p class="specs__foot"><sup class="star">*</sup> По официальным данным производителя для этой модели.</p>{% endif %}
+  </section>
+  {% endif %}
+
+  <section class="equipment">
+    <h2 class="section-title">Полная комплектация</h2>
+    {% for group in car.features %}
+    <details class="equipment__group"{% if loop.first %} open{% endif %}>
+      <summary><span>{{ group.title }}</span><span class="equipment__count">{{ group['items']|length }}</span></summary>
+      <ul>{% for item in group['items'] %}<li>{{ item }}</li>{% endfor %}</ul>
+    </details>
+    {% endfor %}
+  </section>
+
+  <div class="sticky-cta">
+    <span class="sticky-cta__price">{% include "partials/price.html" %}</span>
+    {% if links.whatsapp %}<a class="btn btn--primary btn--small" href="{{ links.whatsapp }}?text={{ ('Здравствуйте! Интересует ' ~ car.fullName ~ ', ' ~ car.color ~ '. ' ~ car.url)|urlencode }}" target="_blank" rel="noopener">WhatsApp</a>{% endif %}
+  </div>
+</main>
+{% endblock %}
+{% block scripts %}<script src="{{ root }}assets/js/car.js" defer></script>{% endblock %}

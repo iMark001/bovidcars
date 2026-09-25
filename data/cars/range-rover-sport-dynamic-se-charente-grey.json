@@ -1,0 +1,106 @@
+{
+  "slug": "range-rover-sport-dynamic-se-charente-grey",
+  "brand": "land-rover",
+  "model": "Range Rover Sport",
+  "trim": "Dynamic SE SWB D249",
+  "year": 2026,
+  "engineType": "diesel",
+  "color": "Charente Grey",
+  "interior": "Кожа Windsor, салон Black/Tan (чёрный/коричневый)",
+  "wheels": "23″, Style 5135, Gloss Black, красные суппорты",
+  "vin": "SAL1A2BW1TA660361",
+  "configId": null,
+  "status": "available",
+  "addedDate": "2026-09-25",
+  "price": {"amount": 125468, "currency": "USD"},
+  "keySpecs": [
+    {"label": "Двигатель", "value": "3.0 дизель"},
+    {"label": "Мощность", "value": "249 л.с."},
+    {"label": "0–100 км/ч", "value": "7,7 с", "official": true},
+    {"label": "Привод", "value": "AWD", "official": true},
+    {"label": "Мест", "value": "5"}
+  ],
+  "extraOptions": [
+    "Выдвижные боковые подножки — включены в цену",
+    "Открывающаяся панорамная крыша",
+    "Тонированные стёкла второго ряда",
+    "Колёсные диски 23″ Style 5135 Gloss Black и красные тормозные суппорты",
+    "Полноразмерное запасное колесо",
+    "Передние противотуманные фары",
+    "Вставки в салоне Natural Black Veneer",
+    "Technology Pack: салонное зеркало ClearSight с камерой, проекционный дисплей Head-up, автопарковка Park Assist",
+    "Cold Climate Pack: кожаный руль с подогревом, обогрев лобового стекла, обогрев щёток стеклоочистителя"
+  ],
+  "specs": [
+    {"title": "Силовая установка", "rows": [
+      {"label": "Двигатель", "value": "3.0 л, рядный 6-цилиндровый дизель, мягкий гибрид (MHEV)", "official": true},
+      {"label": "Мощность", "value": "249 л.с. (183 кВт)"},
+      {"label": "Крутящий момент", "value": "600 Нм", "official": true},
+      {"label": "Разгон 0–100 км/ч", "value": "7,7 с", "official": true},
+      {"label": "Максимальная скорость", "value": "206 км/ч", "official": true},
+      {"label": "Коробка передач", "value": "Автоматическая, 8 ступеней"},
+      {"label": "Привод", "value": "Полный (AWD)", "official": true},
+      {"label": "Расход топлива (смешанный, WLTP)", "value": "7,1–7,8 л/100 км", "official": true},
+      {"label": "Топливный бак", "value": "80 л", "official": true}
+    ]},
+    {"title": "Габариты", "rows": [
+      {"label": "Длина", "value": "4 946 мм"},
+      {"label": "Ширина / с зеркалами", "value": "2 047 / 2 209 мм"},
+      {"label": "Высота", "value": "1 820 мм"},
+      {"label": "Колёсная база", "value": "2 997 мм", "official": true},
+      {"label": "Глубина преодолеваемого брода", "value": "900 мм", "official": true}
+    ]},
+    {"title": "Вместимость и масса", "rows": [
+      {"label": "Мест", "value": "5"},
+      {"label": "Багажник за 2-м рядом", "value": "647 л", "official": true},
+      {"label": "Багажник за 1-м рядом", "value": "1 491 л", "official": true},
+      {"label": "Снаряжённая масса (EU)", "value": "2 390 кг", "official": true},
+      {"label": "Масса буксируемого прицепа", "value": "3 500 кг", "official": true}
+    ]}
+  ],
+  "features": [
+    {"title": "Внедорожные и ходовые системы", "items": [
+      "Terrain Response 2",
+      "All Terrain Progress Control (ATPC)",
+      "Адаптивная подвеска Adaptive Dynamics"
+    ]},
+    {"title": "Помощь водителю и безопасность", "items": [
+      "Система кругового обзора 3D",
+      "Парктроники спереди и сзади",
+      "Контроль слепых зон в наружных зеркалах",
+      "Система удержания в полосе",
+      "Система контроля периметра",
+      "Мониторинг усталости водителя",
+      "Адаптивный круиз-контроль с Steering Assist"
+    ]},
+    {"title": "Экстерьер", "items": [
+      "Фары Pixel LED с фирменными дневными ходовыми огнями",
+      "Наружные зеркала: подогрев, электропривод, электроскладывание, автозатемнение",
+      "Электропривод двери багажника"
+    ]},
+    {"title": "Интерьер и комфорт", "items": [
+      "Сиденья из кожи Windsor, Black/Tan",
+      "Потолок из чёрной ткани",
+      "Передние сиденья с регулировкой в 20 направлениях и подогревом",
+      "Сиденья второго ряда 60:40 с подогревом",
+      "Бесключевой доступ Keyless Entry",
+      "Четырёхзонный климат-контроль",
+      "Система контроля качества воздуха в салоне",
+      "Премиальная фоновая подсветка салона",
+      "Холодильник в центральной консоли"
+    ]},
+    {"title": "Мультимедиа и звук", "items": [
+      "Сенсорный экран 13,1″",
+      "Мультимедийная система Pivi Pro",
+      "Аудиосистема Meridian™: 400 Вт, 15 динамиков и сабвуфер",
+      "Android Auto™ и Apple CarPlay®"
+    ]}
+  ],
+  "supplemented": [
+    {"field": "Разгон 0–100 км/ч", "value": "7,7 с", "note": "В КП салона указано 7,8 с", "source": "Land Rover, Range Rover Sport Technical Specification (landrover.com)"},
+    {"field": "Расход топлива", "value": "7,1–7,8 л/100 км (WLTP)", "note": "В КП салона указано 10,1 л (смешанный)", "source": "Land Rover, Range Rover Sport Technical Specification (landrover.com)"},
+    {"field": "Двигатель, момент, макс. скорость, привод, бак", "value": "MHEV I6, 600 Нм, 206 км/ч, AWD, 80 л", "source": "Land Rover, Range Rover Sport Technical Specification (landrover.com)"},
+    {"field": "Колёсная база, брод, багажник, масса, прицеп", "value": "2 997 мм, 900 мм, 647/1 491 л, 2 390 кг, 3 500 кг", "source": "Land Rover, Range Rover Sport Technical Specification (landrover.com)"}
+  ],
+  "sourcePdf": "PDF 25.09.2026/SAL1A2BW1TA660361.pdf"
+}

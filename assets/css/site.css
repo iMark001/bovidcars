@@ -1,0 +1,351 @@
+/* bovidcars — стили сайта. Токены взяты из DESIGN-apple.md */
+:root {
+  --primary: #0066cc;
+  --primary-focus: #0071e3;
+  --primary-on-dark: #2997ff;
+  --ink: #1d1d1f;
+  --ink-80: #333336;
+  --ink-48: #6e6e73;
+  --on-dark: #ffffff;
+  --on-dark-muted: #a1a1a6;
+  --canvas: #ffffff;
+  --parchment: #f5f5f7;
+  --pearl: #fafafc;
+  --tile-1: #272729;
+  --tile-2: #2a2a2c;
+  --tile-3: #1d1d1f;
+  --black: #000000;
+  --hairline: #e0e0e0;
+  --hairline-dark: rgba(255, 255, 255, 0.12);
+  --chip: rgba(210, 210, 215, 0.64);
+
+  --status-available: #1a7f37;
+  --status-in_transit: #0066cc;
+  --status-reserved: #b25000;
+  --status-sold: #86868b;
+
+  --font: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", Inter, system-ui, sans-serif;
+  --r-sm: 8px;
+  --r-md: 11px;
+  --r-lg: 18px;
+  --r-pill: 9999px;
+  --section: 80px;
+  --gutter: 24px;
+  --content: 1200px;
+  --product-shadow: drop-shadow(3px 5px 30px rgba(0, 0, 0, 0.22));
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  font-family: var(--font);
+  font-size: 17px;
+  line-height: 1.47;
+  letter-spacing: -0.022em;
+  color: var(--ink);
+  background: var(--canvas);
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; display: block; }
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; }
+button { font: inherit; letter-spacing: inherit; cursor: pointer; }
+:focus-visible { outline: 2px solid var(--primary-focus); outline-offset: 2px; }
+h1, h2, h3 { margin: 0; font-weight: 600; }
+p { margin: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+}
+
+/* ---------- навигация ---------- */
+.global-nav { background: var(--black); color: var(--on-dark); }
+.global-nav__inner {
+  max-width: var(--content); margin: 0 auto; height: 48px; padding: 0 var(--gutter);
+  display: flex; align-items: center; gap: 28px;
+}
+.wordmark { color: var(--on-dark); font-weight: 600; font-size: 19px; letter-spacing: -0.03em; }
+.wordmark:hover { text-decoration: none; }
+.wordmark--ink { color: var(--ink); }
+.global-nav__links { display: flex; gap: 24px; margin-left: auto; }
+.global-nav__links a, .global-nav__contact { color: #d2d2d7; font-size: 13px; letter-spacing: -0.01em; }
+.global-nav__links a:hover, .global-nav__contact:hover { color: var(--on-dark); text-decoration: none; }
+.global-nav__contact { padding: 5px 12px; border-radius: var(--r-pill); background: #1d1d1f; }
+
+.subnav {
+  position: sticky; top: 0; z-index: 20;
+  background: rgba(245, 245, 247, 0.82);
+  backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+.subnav__inner {
+  max-width: var(--content); margin: 0 auto; padding: 10px var(--gutter);
+  display: flex; align-items: center; gap: 12px; overflow-x: auto; scrollbar-width: none;
+}
+.subnav__inner::-webkit-scrollbar { display: none; }
+.filter { display: flex; gap: 6px; flex-shrink: 0; padding-right: 12px; border-right: 1px solid rgba(0, 0, 0, 0.1); }
+.filter:last-of-type { border-right: 0; }
+
+.chip {
+  border: 1px solid transparent; background: transparent; color: var(--ink-80);
+  border-radius: var(--r-pill); padding: 6px 14px; font-size: 14px; white-space: nowrap;
+}
+.chip:hover { background: rgba(0, 0, 0, 0.05); }
+.chip.is-active { background: var(--ink); color: var(--on-dark); }
+.chip:active, .btn:active { transform: scale(0.95); }
+
+
+/* ---------- кнопки ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  min-height: 44px; padding: 11px 22px; border-radius: var(--r-pill);
+  font-size: 17px; line-height: 1; border: 1px solid transparent; white-space: nowrap;
+}
+.btn:hover { text-decoration: none; }
+.btn--primary { background: var(--primary); color: var(--on-dark); }
+.btn--primary:hover { background: var(--primary-focus); }
+.btn--ghost { background: transparent; color: var(--primary); border-color: var(--primary); }
+.btn--ghost:hover { background: rgba(0, 102, 204, 0.06); }
+.btn--small { min-height: 32px; padding: 7px 16px; font-size: 14px; }
+
+.icon-btn {
+  width: 44px; height: 44px; border-radius: 50%; border: 0;
+  background: var(--chip); color: var(--ink); font-size: 26px; line-height: 1;
+}
+
+/* ---------- логотипы марок (монохром) ---------- */
+.logo { width: auto; filter: brightness(0); }
+.logo--volvo { height: 44px; }
+.logo--land-rover { height: 40px; }
+.logo--porsche { height: 14px; }
+.brand-tile--1 .logo { filter: brightness(0) invert(1); }
+
+/* ---------- статус ---------- */
+.status {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 13px; font-weight: 600; letter-spacing: -0.01em; color: var(--status-available);
+}
+.status::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+.status--in_transit { color: var(--status-in_transit); }
+.status--reserved { color: var(--status-reserved); }
+.status--sold { color: var(--status-sold); }
+
+/* ---------- цена ---------- */
+.price-value { display: inline-flex; flex-direction: column; }
+.price-value__alt { font-size: 0.7em; font-weight: 400; color: var(--ink-48); }
+
+/* ---------- главная: hero ---------- */
+.hero { background: var(--canvas); text-align: center; padding-top: 72px; }
+.hero__text { max-width: 1040px; margin: 0 auto; padding: 0 var(--gutter); }
+.hero__title {
+  font-size: clamp(40px, 7vw, 80px); line-height: 1.04; letter-spacing: -0.035em;
+}
+.hero__lead { max-width: 640px; margin: 16px auto 0; font-size: 21px; line-height: 1.38; color: var(--ink-48); letter-spacing: -0.01em; }
+.hero__actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 28px; }
+.hero__media { margin: 56px 0 0; }
+.hero__media img { width: 100%; height: min(72vh, 760px); object-fit: cover; object-position: center 62%; }
+.hero__brands {
+  max-width: var(--content); margin: 0 auto; padding: 40px var(--gutter);
+  display: flex; justify-content: center; align-items: center; gap: clamp(32px, 8vw, 112px);
+}
+.hero__brand { display: flex; flex-direction: column; align-items: center; gap: 12px; color: var(--ink-48); font-size: 14px; }
+.hero__brand:hover { text-decoration: none; color: var(--ink); }
+.hero__brand .logo { opacity: 0.85; }
+
+/* ---------- главная: плитки марок ---------- */
+.brand-tile { padding: var(--section) var(--gutter); scroll-margin-top: 56px; }
+.brand-tile--0 { background: var(--canvas); }
+.brand-tile--1 { background: var(--tile-1); color: var(--on-dark); }
+.brand-tile--2 { background: var(--parchment); }
+.brand-tile[hidden] { display: none; }
+.brand-tile__head {
+  max-width: var(--content); margin: 0 auto 40px;
+  display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center;
+}
+.brand-tile__title { font-size: clamp(32px, 4.5vw, 48px); line-height: 1.08; letter-spacing: -0.03em; }
+
+.card-grid {
+  max-width: var(--content); margin: 0 auto;
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 384px)); justify-content: center; gap: 24px;
+}
+.card {
+  display: flex; flex-direction: column; overflow: hidden;
+  background: var(--canvas); color: var(--ink); border-radius: var(--r-lg);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+.card:hover { text-decoration: none; }
+.card[hidden] { display: none; }
+.brand-tile--0 .card { background: var(--parchment); border-color: transparent; }
+.brand-tile--1 .card { background: var(--tile-3); color: var(--on-dark); border-color: var(--hairline-dark); }
+.card__media { aspect-ratio: 16 / 10; overflow: hidden; background: #ececee; }
+.card__media img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+.card:hover .card__media img { transform: scale(1.03); }
+.card__media--cutout { background: #ececee; display: grid; place-items: center; padding: 8% 6%; }
+.card__media--cutout img { object-fit: contain; filter: var(--product-shadow); }
+.card__media--fit { background: var(--edge, #ececee); padding: 5% 7%; }
+.card__media--fit img { object-fit: contain; border-radius: var(--r-sm); }
+.card__body { padding: 20px 24px 24px; display: flex; flex-direction: column; gap: 4px; flex: 1; }
+.card__title { font-size: 28px; line-height: 1.14; letter-spacing: -0.025em; margin-top: 6px; }
+.card__trim { font-size: 17px; font-weight: 600; }
+.card__meta { font-size: 14px; color: var(--ink-48); }
+.brand-tile--1 .card__meta, .brand-tile--1 .price-value__alt { color: var(--on-dark-muted); }
+.card__price { margin-top: auto; padding-top: 16px; font-size: 24px; font-weight: 600; letter-spacing: -0.02em; }
+.card.is-sold { opacity: 0.55; }
+
+.empty-state { max-width: 640px; margin: 0 auto; padding: var(--section) var(--gutter); text-align: center; color: var(--ink-48); }
+
+/* ---------- страница авто ---------- */
+.subnav--car .subnav__inner { gap: 20px; }
+.subnav__back { font-size: 14px; flex-shrink: 0; }
+.subnav__title { font-size: 19px; font-weight: 600; letter-spacing: -0.02em; white-space: nowrap; }
+.subnav__price { margin-left: auto; font-size: 15px; font-weight: 600; white-space: nowrap; }
+.subnav__price .price-value { flex-direction: row; align-items: baseline; gap: 8px; }
+.subnav__price .price-value__alt { font-size: 13px; }
+
+.car-hero { background: var(--parchment); text-align: center; padding: 64px var(--gutter) 56px; overflow: hidden; }
+.car-hero__head { display: flex; flex-direction: column; align-items: center; }
+.logo--hero.logo--volvo { height: 52px; }
+.logo--hero.logo--land-rover { height: 46px; }
+.logo--hero.logo--porsche { height: 18px; }
+.car-hero__title {
+  margin-top: 22px; font-size: clamp(56px, 11vw, 128px); line-height: 0.95; letter-spacing: -0.045em;
+}
+.car-hero__trim { margin-top: 12px; font-size: clamp(21px, 2.6vw, 28px); line-height: 1.14; letter-spacing: -0.015em; }
+.car-hero__meta { margin-top: 14px; display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 18px; font-size: 14px; color: var(--ink-48); }
+.car-hero__media { max-width: 1100px; margin: 40px auto 0; }
+.car-hero__media img { width: auto; height: auto; max-width: 100%; max-height: min(62vh, 600px); margin: 0 auto; mix-blend-mode: multiply; border-radius: var(--r-sm); }
+.car-hero__media--cutout img { mix-blend-mode: normal; filter: var(--product-shadow); border-radius: 0; }
+
+.key-specs {
+  max-width: 1000px; margin: 48px auto 0; padding: 0;
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 24px;
+}
+.key-specs__item { display: flex; flex-direction: column-reverse; gap: 4px; }
+.key-specs dt { font-size: 14px; color: var(--ink-48); }
+.key-specs dd { margin: 0; font-size: clamp(24px, 3vw, 34px); font-weight: 600; letter-spacing: -0.03em; line-height: 1.1; }
+.star { color: var(--ink-48); font-size: 0.55em; font-weight: 400; margin-left: 2px; }
+
+.section-title { font-size: clamp(28px, 3.6vw, 40px); line-height: 1.1; letter-spacing: -0.03em; }
+.section-title--on-dark { color: var(--on-dark); }
+
+.offer {
+  max-width: var(--content); margin: 0 auto; padding: var(--section) var(--gutter);
+  display: grid; grid-template-columns: 1fr 1fr; gap: 32px 64px; align-items: start;
+}
+.offer__amount { margin: 20px 0 16px; font-size: clamp(40px, 5.5vw, 64px); font-weight: 600; letter-spacing: -0.04em; line-height: 1.05; }
+.offer__amount .price-value__alt { font-size: 21px; letter-spacing: -0.015em; margin-top: 8px; }
+.offer__note { margin-top: 16px; font-size: 14px; color: var(--ink-48); max-width: 44ch; }
+.offer__facts { margin: 0; border-top: 1px solid var(--hairline); }
+.offer__facts > div { display: grid; grid-template-columns: 150px 1fr; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--hairline); }
+.offer__facts dt { color: var(--ink-48); font-size: 15px; }
+.offer__facts dd { margin: 0; font-size: 17px; }
+.mono-ish { font-variant-numeric: tabular-nums; letter-spacing: 0.02em; }
+.offer__actions { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 12px; }
+.share-menu { grid-column: 1 / -1; display: flex; flex-wrap: wrap; align-items: center; gap: 8px 20px; font-size: 15px; }
+.share-menu[hidden] { display: none; }
+.share-menu button { border: 0; background: none; color: var(--primary); padding: 0; }
+.share-menu__done { color: var(--status-available); }
+
+.gallery { background: var(--canvas); padding: 0 0 var(--section); }
+.gallery__track {
+  display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory;
+  padding: 0 max(var(--gutter), calc((100vw - var(--content)) / 2)); scrollbar-width: none;
+}
+.gallery__track::-webkit-scrollbar { display: none; }
+.gallery__item {
+  margin: 0; flex: 0 0 min(86vw, 1000px); aspect-ratio: 16 / 9; scroll-snap-align: center;
+  border-radius: var(--r-lg); overflow: hidden; background: #ececee;
+}
+.gallery__item img { width: 100%; height: 100%; object-fit: cover; }
+.gallery__item--cutout { background: var(--parchment); display: grid; place-items: center; padding: 6%; }
+.gallery__item--cutout img { object-fit: contain; filter: var(--product-shadow); }
+.gallery__nav { display: flex; justify-content: flex-end; gap: 12px; max-width: var(--content); margin: 20px auto 0; padding: 0 var(--gutter); }
+
+.options { background: var(--tile-1); color: var(--on-dark); padding: var(--section) var(--gutter); }
+.options__inner { max-width: var(--content); margin: 0 auto; }
+.options__list {
+  list-style: none; margin: 40px 0 0; padding: 0;
+  display: grid; grid-template-columns: repeat(2, 1fr); column-gap: 64px;
+}
+.options__list li { padding: 16px 0; border-top: 1px solid var(--hairline-dark); font-size: 19px; line-height: 1.35; letter-spacing: -0.015em; }
+
+.specs { background: var(--parchment); padding: var(--section) max(var(--gutter), calc((100vw - var(--content)) / 2)); }
+.specs__grid { margin-top: 40px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px 64px; }
+.specs__group h3 { font-size: 21px; letter-spacing: -0.02em; margin-bottom: 8px; }
+.specs__group dl { margin: 0; }
+.specs__row { display: flex; justify-content: space-between; gap: 24px; padding: 12px 0; border-bottom: 1px solid rgba(0, 0, 0, 0.08); }
+.specs__row dt { color: var(--ink-48); }
+.specs__row dd { margin: 0; text-align: right; font-weight: 600; font-variant-numeric: tabular-nums; }
+.specs__foot { margin-top: 32px; font-size: 14px; color: var(--ink-48); }
+
+.equipment { max-width: var(--content); margin: 0 auto; padding: var(--section) var(--gutter); }
+.equipment .section-title { margin-bottom: 32px; }
+.equipment__group { border-top: 1px solid var(--hairline); }
+.equipment__group:last-child { border-bottom: 1px solid var(--hairline); }
+.equipment__group summary {
+  list-style: none; cursor: pointer; padding: 20px 0; display: flex; align-items: baseline; gap: 12px;
+  font-size: 21px; font-weight: 600; letter-spacing: -0.02em;
+}
+.equipment__group summary::-webkit-details-marker { display: none; }
+.equipment__group summary::after { content: "+"; margin-left: auto; font-weight: 300; font-size: 28px; line-height: 1; color: var(--ink-48); }
+.equipment__group[open] summary::after { content: "−"; }
+.equipment__count { font-size: 14px; font-weight: 400; color: var(--ink-48); }
+.equipment__group ul { list-style: none; margin: 0; padding: 0 0 24px; columns: 2; column-gap: 64px; }
+.equipment__group li { padding: 7px 0; break-inside: avoid; color: var(--ink-80); }
+
+.sticky-cta { display: none; }
+
+/* ---------- подвал ---------- */
+.footer { background: var(--parchment); color: var(--ink-80); padding: 56px var(--gutter) 40px; font-size: 14px; }
+.footer__inner {
+  max-width: var(--content); margin: 0 auto;
+  display: grid; grid-template-columns: 1fr auto; gap: 24px 48px;
+}
+.footer__brand p { margin-top: 6px; color: var(--ink-48); }
+.footer__contacts { display: flex; flex-direction: column; gap: 4px; text-align: right; line-height: 1.7; }
+.footer__manager { font-weight: 600; color: var(--ink); }
+.footer__legal { grid-column: 1 / -1; padding-top: 20px; border-top: 1px solid var(--hairline); font-size: 12px; color: var(--ink-48); max-width: 90ch; }
+
+/* ---------- адаптив ---------- */
+@media (max-width: 1068px) {
+  .offer { grid-template-columns: 1fr; }
+}
+@media (max-width: 834px) {
+  .global-nav__links { display: none; }
+  .global-nav__contact { margin-left: auto; }
+  .options__list, .specs__grid { grid-template-columns: 1fr; }
+  .equipment__group ul { columns: 1; }
+  .subnav--car .subnav__price, .subnav--car .btn { display: none; }
+}
+@media (max-width: 734px) {
+  :root { --section: 56px; --gutter: 16px; }
+  body { padding-bottom: env(safe-area-inset-bottom); }
+  .hero { padding-top: 48px; }
+  .hero__lead { font-size: 19px; }
+  .hero__media { margin-top: 40px; }
+  .hero__media img { height: 56vh; }
+  .card-grid { grid-template-columns: 1fr; }
+  .offer__facts > div { grid-template-columns: 1fr; gap: 2px; }
+  .offer__actions .btn { flex: 1 1 calc(50% - 6px); }
+  .footer__inner { grid-template-columns: 1fr; }
+  .footer__contacts { text-align: left; }
+  .car { padding-bottom: 72px; }
+  .sticky-cta {
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 30;
+    padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
+    background: rgba(245, 245, 247, 0.86);
+    backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px);
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+  }
+  .sticky-cta__price { font-size: 19px; font-weight: 600; letter-spacing: -0.02em; }
+  .sticky-cta__price .price-value__alt { font-size: 12px; }
+}
+@media (max-width: 419px) {
+  .hero__brands { gap: 24px; }
+  .logo--volvo { height: 36px; }
+  .logo--land-rover { height: 32px; }
+  .logo--porsche { height: 11px; }
+}

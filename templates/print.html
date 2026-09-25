@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex, nofollow">
+  <title>{{ car.fullName }}, {{ car.color }} — {{ site.name }}</title>
+  <link rel="stylesheet" href="{{ root }}assets/css/print.css">
+</head>
+<body>
+  <section class="sheet sheet--cover">
+    <header class="sheet__top">
+      <span class="wordmark">{{ site.name }}</span>
+      <span class="sheet__date">Предложение от {{ today|human_date }}</span>
+    </header>
+
+    <div class="cover__head">
+      {% if car.brandLogo %}<img src="{{ root }}assets/brands/{{ car.brandLogo }}" alt="{{ car.brandName }}" class="logo logo--{{ car.brand }}">{% endif %}
+      <h1>{{ car.model }}</h1>
+      <p class="cover__trim">{{ car.trim }}</p>
+      <p class="cover__status"><span class="status status--{{ car.status }}">{{ car.statusLabel }}</span></p>
+    </div>
+
+    {% if car.photos %}
+    <figure class="cover__media{% if car.photos[0].cutout %} cover__media--cutout{% endif %}">
+      <img src="{{ root }}img/{{ car.slug }}/print/{{ car.photos[0].file|replace(".webp", ".jpg") }}" alt="{{ car.fullName }}">
+    </figure>
+    {% endif %}
+
+    <dl class="key-specs">
+      {% for spec in car.keySpecs %}
+      <div><dt>{{ spec.label }}</dt><dd>{{ spec.value }}{% if spec.official %}<sup>*</sup>{% endif %}</dd></div>
+      {% endfor %}
+    </dl>
+
+    <div class="cover__bottom">
+      <dl class="facts">
+        <div><dt>{{ 'VIN' if car.vin else '№ конфигурации' }}</dt><dd>{{ car.vin or car.configId }}</dd></div>
+        <div><dt>Цвет кузова</dt><dd>{{ car.color }}</dd></div>
+        <div><dt>Салон</dt><dd>{{ car.interior }}</dd></div>
+        <div><dt>Колёса</dt><dd>{{ car.wheels }}</dd></div>
+        <div><dt>Модельный год</dt><dd>{{ car.year }}</dd></div>
+      </dl>
+      <div class="cover__side">
+        {% if with_price %}
+        <div class="price">
+          <p class="price__main">{{ car.priceFirst }}</p>
+          <p class="price__alt">{{ car.priceSecond }}</p>
+          <p class="price__rate">Пересчёт по курсу ЕЦБ на {{ rate_date|human_date }}</p>
+          <p class="price__note">{{ site.priceNote }}</p>
+        </div>
+        {% endif %}
+        <div class="contact-card">
+          {{ qr }}
+          <div>
+            <p class="contact-card__lead">Актуальная цена, статус и все фото — по QR-коду</p>
+            {% if site.contacts.manager %}<p class="contact-card__name">{{ site.contacts.manager }}</p>{% endif %}
+            {% if site.contacts.phone %}<p>{{ site.contacts.phone }}</p>{% endif %}
+            <p class="contact-card__channels">{% if links.whatsapp %}WhatsApp{% endif %}{% if links.whatsapp and links.telegram %}, {% endif %}{% if links.telegram %}Telegram{% endif %}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {% if car.photos|length > 1 or car.extraOptions %}
+  <section class="sheet">
+    {% if car.photos|length > 1 %}
+    <div class="photo-grid">
+      {% for photo in car.photos[1:5] %}
+      <figure class="{{ 'is-cutout' if photo.cutout }}"><img src="{{ root }}img/{{ car.slug }}/print/{{ photo.file|replace(".webp", ".jpg") }}" alt=""></figure>
+      {% endfor %}
+    </div>
+    {% endif %}
+    {% if car.extraOptions %}
+    <div class="options">
+      <h2>Дополнительно установлено</h2>
+      <ul>{% for option in car.extraOptions %}<li>{{ option }}</li>{% endfor %}</ul>
+    </div>
+    {% endif %}
+  </section>
+  {% endif %}
+
+  <section class="flow">
+    {% if car.specs %}
+    <h2>Технические характеристики</h2>
+    <div class="spec-columns">
+      {% for group in car.specs %}
+      <div class="spec-group">
+        <h3>{{ group.title }}</h3>
+        <dl>{% for row in group.rows %}<div><dt>{{ row.label }}</dt><dd>{{ row.value }}{% if row.official %}<sup>*</sup>{% endif %}</dd></div>{% endfor %}</dl>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    <h2>Полная комплектация</h2>
+    <div class="feature-columns">
+      {% for group in car.features %}
+      <div class="feature-group">
+        <h3>{{ group.title }}</h3>
+        <ul>{% for item in group['items'] %}<li>{{ item }}</li>{% endfor %}</ul>
+      </div>
+      {% endfor %}
+    </div>
+    {% if car.hasOfficial %}<p class="foot"><sup>*</sup> По официальным данным производителя для этой модели.</p>{% endif %}
+  </section>
+</body>
+</html>

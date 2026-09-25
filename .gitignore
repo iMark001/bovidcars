@@ -1,0 +1,12 @@
+# Исходные КП салонов — содержат данные салонов и покупателей, в репозиторий не попадают
+PDF */
+work/
+contacts.txt
+.env
+.env.local
+.DS_Store
+__pycache__/
+.pytest_cache/
+.coverage
+htmlcov/
+tests/forbidden.local.txt
