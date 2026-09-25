@@ -24,7 +24,9 @@ FOOTER_STYLE = ("width:100%;margin:0 14mm;font-family:-apple-system,'Helvetica N
 
 def footer_template(site: dict) -> str:
     contacts = site["contacts"]
-    left = " ".join(filter(None, [site["name"], contacts.get("manager"), contacts.get("phone")]))
+    company = f"«{contacts['company']}»" if contacts.get("company") else None
+    left = " · ".join(filter(None, [site["name"], contacts.get("manager"), company,
+                                     contacts.get("phone"), contacts.get("email")]))
     return (f'<div style="{FOOTER_STYLE}"><span>{html.escape(left)}</span>'
             '<span><span class="pageNumber"></span> / <span class="totalPages"></span></span></div>')
 

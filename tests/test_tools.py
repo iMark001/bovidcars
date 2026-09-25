@@ -128,3 +128,9 @@ def test_targets_filters_by_slug(tmp_path, monkeypatch):
     monkeypatch.setattr(pdf, "PRINT_DIR", tmp_path)
     assert [p.name for p in pdf.targets(["a"])] == ["a-no-price.html", "a.html"]
     assert len(pdf.targets([])) == 3
+
+
+def test_footer_includes_company_and_email():
+    footer = pdf.footer_template({"name": "bovidcars", "contacts": {
+        "manager": "Иван", "company": "Ромашка", "phone": "+7", "email": "i@r.ru"}})
+    assert "bovidcars · Иван · «Ромашка» · +7 · i@r.ru" in footer

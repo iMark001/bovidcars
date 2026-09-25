@@ -25,7 +25,17 @@
   },
   "contacts": {
     "manager": "Денис Кушанашвили",
+    "title": "Руководитель автосалона",
+    "dealerBrands": [
+      "VOYAH",
+      "XPENG",
+      "JLR",
+      "VOLVO"
+    ],
+    "company": "БОВИД",
     "phone": "+7 906 864-67-17",
+    "email": "dkushanashvili@bovid.ru",
+    "address": "г. Челябинск, пр-т Ленина, 26а/2",
     "whatsapp": "+79068646717",
     "telegram": "+79068646717"
   },

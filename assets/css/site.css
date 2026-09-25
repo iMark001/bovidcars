@@ -304,8 +304,15 @@ p { margin: 0; }
   display: grid; grid-template-columns: 1fr auto; gap: 24px 48px;
 }
 .footer__brand p { margin-top: 6px; color: var(--ink-48); }
-.footer__contacts { display: flex; flex-direction: column; gap: 4px; text-align: right; line-height: 1.7; }
-.footer__manager { font-weight: 600; color: var(--ink); }
+.signature { font-style: normal; text-align: right; line-height: 1.5; }
+.signature__name { font-size: 17px; font-weight: 600; color: var(--ink); letter-spacing: -0.01em; }
+.signature__role { margin-top: 2px; }
+.signature__brands { color: var(--ink-48); letter-spacing: 0.02em; }
+.signature__company { color: var(--ink-48); }
+.signature__address { color: var(--ink-48); }
+.signature__links { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 4px 16px; margin-top: 8px; }
+.signature__links + .signature__address { margin-top: 2px; }
+.signature__address + .signature__links { margin-top: 8px; }
 .footer__legal { grid-column: 1 / -1; padding-top: 20px; border-top: 1px solid var(--hairline); font-size: 12px; color: var(--ink-48); max-width: 90ch; }
 
 /* ---------- адаптив ---------- */
@@ -330,7 +337,8 @@ p { margin: 0; }
   .offer__facts > div { grid-template-columns: 1fr; gap: 2px; }
   .offer__actions .btn { flex: 1 1 calc(50% - 6px); }
   .footer__inner { grid-template-columns: 1fr; }
-  .footer__contacts { text-align: left; }
+  .signature { text-align: left; }
+  .signature__links { justify-content: flex-start; }
   .car { padding-bottom: 72px; }
   .sticky-cta {
     display: flex; align-items: center; justify-content: space-between; gap: 12px;

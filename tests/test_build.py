@@ -146,3 +146,24 @@ def test_unknown_brand_is_reported(capsys, site):
     build.warn_unknown_brands([{"slug": "x", "brand": "bmw"}, {"slug": "y", "brand": "volvo"}], site)
     out = capsys.readouterr().out
     assert "bmw" in out and "volvo" not in out
+
+
+def test_contact_links_include_mailto():
+    links = build.contact_links({"email": " a@b.ru "})
+    assert links["email"] == "mailto:a@b.ru"
+
+
+def test_footer_signature_has_full_contacts(built_site, site):
+    html = (built_site / "index.html").read_text(encoding="utf-8")
+    c = site["contacts"]
+    for value in (c["manager"], c["title"], c["company"], c["email"], c["address"]):
+        assert value in html
+    assert f'href="mailto:{c["email"]}"' in html
+
+
+def test_print_card_has_signature(built_site, site):
+    slug = build.load_car_slugs()[0]
+    html = (built_site / "print" / f"{slug}-no-price.html").read_text(encoding="utf-8")
+    c = site["contacts"]
+    for value in (c["title"], c["company"], c["email"], c["address"]):
+        assert value in html

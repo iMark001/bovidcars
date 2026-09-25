@@ -53,9 +53,14 @@
           {{ qr }}
           <div>
             <p class="contact-card__lead">Актуальная цена, статус и все фото — по QR-коду</p>
-            {% if site.contacts.manager %}<p class="contact-card__name">{{ site.contacts.manager }}</p>{% endif %}
-            {% if site.contacts.phone %}<p>{{ site.contacts.phone }}</p>{% endif %}
-            <p class="contact-card__channels">{% if links.whatsapp %}WhatsApp{% endif %}{% if links.whatsapp and links.telegram %}, {% endif %}{% if links.telegram %}Telegram{% endif %}</p>
+            {% set c = site.contacts %}
+            {% if c.manager %}<p class="contact-card__name">{{ c.manager }}</p>{% endif %}
+            {% if c.title %}<p class="contact-card__role">{{ c.title }}{% if c.dealerBrands %}<br>{{ c.dealerBrands|join(" · ") }}{% endif %}</p>{% endif %}
+            {% if c.company %}<p class="contact-card__role">Компания «{{ c.company }}»</p>{% endif %}
+            {% if c.phone %}<p class="contact-card__phone">{{ c.phone }}</p>{% endif %}
+            {% if c.email %}<p>{{ c.email }}</p>{% endif %}
+            {% if c.address %}<p class="contact-card__muted">{{ c.address }}</p>{% endif %}
+            <p class="contact-card__muted">{% if links.whatsapp %}WhatsApp{% endif %}{% if links.whatsapp and links.telegram %} · {% endif %}{% if links.telegram %}Telegram{% endif %}</p>
           </div>
         </div>
       </div>

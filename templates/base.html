@@ -34,12 +34,21 @@
         <span class="wordmark wordmark--ink">{{ site.name }}</span>
         <p>{{ site.tagline }}.</p>
       </div>
-      <div class="footer__contacts">
-        {% if site.contacts.manager %}<p class="footer__manager">{{ site.contacts.manager }}</p>{% endif %}
-        {% if links.phone %}<a href="{{ links.phone }}">{{ site.contacts.phone }}</a>{% endif %}
-        {% if links.whatsapp %}<a href="{{ links.whatsapp }}" target="_blank" rel="noopener">WhatsApp</a>{% endif %}
-        {% if links.telegram %}<a href="{{ links.telegram }}" target="_blank" rel="noopener">Telegram</a>{% endif %}
-      </div>
+      {% set c = site.contacts %}
+      <address class="signature">
+        {% if c.manager %}<p class="signature__name">{{ c.manager }}</p>{% endif %}
+        {% if c.title %}<p class="signature__role">{{ c.title }}{% if c.dealerBrands %} <span class="signature__brands">{{ c.dealerBrands|join(" · ") }}</span>{% endif %}</p>{% endif %}
+        {% if c.company %}<p class="signature__company">Компания «{{ c.company }}»</p>{% endif %}
+        <p class="signature__links">
+          {% if links.phone %}<a href="{{ links.phone }}">{{ c.phone }}</a>{% endif %}
+          {% if links.email %}<a href="{{ links.email }}">{{ c.email }}</a>{% endif %}
+        </p>
+        {% if c.address %}<p class="signature__address">{{ c.address }}</p>{% endif %}
+        <p class="signature__links">
+          {% if links.whatsapp %}<a href="{{ links.whatsapp }}" target="_blank" rel="noopener">WhatsApp</a>{% endif %}
+          {% if links.telegram %}<a href="{{ links.telegram }}" target="_blank" rel="noopener">Telegram</a>{% endif %}
+        </p>
+      </address>
       <p class="footer__legal">{{ site.priceNote }} Цены указаны в евро и долларах; пересчёт между валютами — по курсу ЕЦБ. Характеристики, отмеченные звёздочкой, указаны по данным производителя.</p>
     </div>
   </footer>

@@ -84,6 +84,8 @@ def contact_links(contacts: dict) -> dict:
         links["telegram"] = "https://t.me/" + (tg[1:] if tg.startswith("@") else "+" + "".join(ch for ch in tg if ch.isdigit()))
     if contacts.get("phone"):
         links["phone"] = "tel:+" + "".join(ch for ch in contacts["phone"] if ch.isdigit())
+    if contacts.get("email"):
+        links["email"] = "mailto:" + contacts["email"].strip()
     return links
 
 
